@@ -1,0 +1,60 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Création d'un nouvelle établisement{% endblock %}
+
+{% block body %}
+
+    {{ include('components/_side.html.twig') }}
+
+
+    <div class="right">
+        <h1 class="text-center mt-5">Création d'une nouvelle établisement</h1>
+        <a href="{{ path('etablissement_index') }}" class="fw-bold mb-7 text-center text-decoration-underline">Consulter la liste des établissements</a>
+        <div class="card-etablisement">
+            {{ form_start(form) }}
+            {{ form_errors(form) }}
+            <div class="col mt-2 me-4 ms-4">
+                <label class="form-label">Nom de l'établisement</label>
+                {{ form_widget(form.name) }}
+            </div>
+            <div class="row me-2 ms-2 mt-2">
+                <div class="col">
+                    <label class="form-label">Adresse</label>
+                    {{ form_widget(form.adress) }}
+                </div>
+                <div class="col">
+                    <label class="form-label">Ville</label>
+                    {{ form_widget(form.city) }}
+                </div>
+                <div class="col">
+                    <label class="form-label">Code postal</label>
+                    {{ form_widget(form.postalcode) }}
+                </div>
+            </div>
+            <div class="col mt-2 me-4 ms-4">
+                <label class="form-label">Note interne</label>
+                {{ form_widget(form.note) }}
+            </div>
+        </div>
+        <h3 class="mt-5">Information sur la référente</h3>
+        <div class="card-etablisement">
+            <div class="col mt-2 me-4 ms-4">
+                <label class="form-label">Personne de contact</label>
+                {{ form_widget(form.name_contact) }}
+            </div>
+            <div class="col mt-2 me-4 ms-4">
+                <label class="form-label">Téléphone</label>
+                {{ form_widget(form.phone) }}
+            </div>
+            <div class="col mt-2 me-4 ms-4">
+                <label class="form-label">Adresse mail</label>
+                {{ form_widget(form.email) }}
+            </div>
+        </div>
+        <button type="submit" class="btn btn-primary float-end mt-5 mb-2 me-3">Envoyé</button>
+
+    </div>
+    {{ form_end(form) }}
+
+
+{% endblock %}

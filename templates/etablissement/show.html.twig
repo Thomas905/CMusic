@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Etablisement{% endblock %}
+
+{% block body %}
+{{ include('components/_side.html.twig') }}
+    <div class="right">
+        <h1 class="text-center mt-5">Récapitulatif des prestations de l'établissement <br><span class="fw-bold">{{ etablissement.name }}</span> </h1>
+        <p class="text-center">Personne de contact: {{ etablissement.nameContact }} <br>Téléphone: {{ etablissement.phone }}</p>
+        <a href="{{ path('etablissement_index') }}" class="fw-bold text-center text-decoration-underline">Consulter la liste des établissements</a>
+        <a href="{{ path('etablissement_edit', {'id': etablissement.id}) }}" class="fw-bold mb-7 text-center text-decoration-underline">Modifier l'établissement</a>
+        <div class="table-responsive">
+            <table class="table table-bordered shadow-cmusic">
+                <thead>
+                <tr>
+                    <th>Date de la prestation <img id="calendar" src="{{ asset('build/images/calendar-black.png') }}" alt="calendar" class="ms-3"></th>
+                    <th>Prix</th>
+                    <th>Statut du paiement</th>
+                    <th>Action</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for prestation in etablissement.prestation %}
+                    <tr>
+                        <td>{{ prestation.date|date("m/d/Y") }}</td>
+                        <td>{{ prestation.price }} €</td>
+                        <td>{{ prestation.paymentmethod }}</td>
+                        <td><a href="{{ path('etablissement_edit', {'id': prestation.id}) }}"><img src="{{ asset('build/images/pen.png') }}" alt="pen"></a></td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+
+
+
+
+    {{ include('etablissement/_delete_form.html.twig') }}
+{% endblock %}
