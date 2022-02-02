@@ -6,7 +6,7 @@
 {{ include('components/_side.html.twig') }}
     <div class="right">
         <h1 class="text-center mt-5">{{ etablissement.name }} </h1>
-        <p class="text-center">Personne de contact: {{ etablissement.nameContact }}</p>
+        <p class="text-center">Personne de contact: {{ etablissement.nameContact }} <br>Téléphone: {{ etablissement.phone }}</p>
         <a href="{{ path('etablissement_index') }}" class="fw-bold mb-7 text-center text-decoration-underline">Consulter la liste des établissements</a>
         <div class="table-responsive">
             <table class="table table-bordered shadow-cmusic">
@@ -20,7 +20,6 @@
                 </thead>
                 <tbody>
                 {% for prestation in etablissement.prestation %}
-                    {{ dump(prestation) }}
                     <tr>
                         <td>{{ prestation.date|date("m/d/Y") }}</td>
                         <td>{{ prestation.price }} €</td>
