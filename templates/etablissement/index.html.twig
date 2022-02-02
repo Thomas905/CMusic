@@ -17,20 +17,16 @@
                 <th>Personne de contact</th>
                 <th>Téléphone</th>
                 <th>Adresse mail</th>
-                <th>Action</th>
             </tr>
             </thead>
             <tbody>
-            {% for etablisement in etablisements %}
+            {% for etablissement in etablisements %}
                 <tr>
-                    <td>{{ etablisement.name }}</td>
-                    <td>{{ etablisement.adress }} {{ etablisement.postalcode }} {{ etablisement.city }}</td>
-                    <td>{{ etablisement.nameContact }}</td>
-                    <td>{{ etablisement.phone }}</td>
-                    <td>{{ etablisement.email }}</td>
-                    <td class="d-flex justify-content-center">
-                        <a href="{{ path('etablissement_show', {'id': etablisement.id}) }}"><img src="{{ asset('build/images/show.png') }}" alt="show"></a>
-                    </td>
+                    <td><a href="{{ path('etablissement_show', {'id': etablissement.id}) }}">{{ etablissement.name }}</td>
+                    <td>{{ etablissement.adress }} {{ etablissement.postalcode }} {{ etablissement.city }}</td>
+                    <td>{{ etablissement.nameContact }}</td>
+                    <td>{{ etablissement.phone }}</td>
+                    <td>{{ etablissement.email }}</td>
                 </tr>
             {% else %}
                 <tr>
