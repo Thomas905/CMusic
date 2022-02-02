@@ -5,9 +5,10 @@
 {% block body %}
 {{ include('components/_side.html.twig') }}
     <div class="right">
-        <h1 class="text-center mt-5">{{ etablissement.name }} </h1>
+        <h1 class="text-center mt-5">Récapitulatif des prestations de l'établissement <br><span class="fw-bold">{{ etablissement.name }}</span> </h1>
         <p class="text-center">Personne de contact: {{ etablissement.nameContact }} <br>Téléphone: {{ etablissement.phone }}</p>
-        <a href="{{ path('etablissement_index') }}" class="fw-bold mb-7 text-center text-decoration-underline">Consulter la liste des établissements</a>
+        <a href="{{ path('etablissement_index') }}" class="fw-bold text-center text-decoration-underline">Consulter la liste des établissements</a>
+        <a href="{{ path('etablissement_edit', {'id': etablissement.id}) }}" class="fw-bold mb-7 text-center text-decoration-underline">Modifier l'établissement</a>
         <div class="table-responsive">
             <table class="table table-bordered shadow-cmusic">
                 <thead>
