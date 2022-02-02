@@ -1,0 +1,49 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Etablisement index{% endblock %}
+
+{% block body %}
+    <h1>Etablisement index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Adress</th>
+                <th>City</th>
+                <th>Postalcode</th>
+                <th>Name_contact</th>
+                <th>Phone</th>
+                <th>Email</th>
+                <th>Note</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for etablisement in etablisements %}
+            <tr>
+                <td>{{ etablisement.id }}</td>
+                <td>{{ etablisement.name }}</td>
+                <td>{{ etablisement.adress }}</td>
+                <td>{{ etablisement.city }}</td>
+                <td>{{ etablisement.postalcode }}</td>
+                <td>{{ etablisement.nameContact }}</td>
+                <td>{{ etablisement.phone }}</td>
+                <td>{{ etablisement.email }}</td>
+                <td>{{ etablisement.note }}</td>
+                <td>
+                    <a href="{{ path('etablisement_show', {'id': etablisement.id}) }}">show</a>
+                    <a href="{{ path('etablisement_edit', {'id': etablisement.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="10">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('etablisement_new') }}">Create new</a>
+{% endblock %}
