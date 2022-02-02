@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello LoginController!{% endblock %}
+
+{% block body %}
+
+    {% include "components/_side.html.twig" %}
+    <div class="right-login">
+        <h1 class="text-center mt-5">Connexion à votre gestionnaire de prestation </h1>
+        {% if error %}
+            <div>{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+        {% endif %}
+
+        <form action="{{ path('login') }}" method="post">
+            <div class="card-login">
+                <div class="col mt-2 me-4 ms-4">
+                    <label class="form-label">Adresse mail</label>
+                    <input type="text" id="username" name="_username" value="{{ last_username }}" class="form-control" />
+                </div>
+
+                <div class="col mt-2 me-4 ms-4">
+                    <label class="form-label">Mot de passe</label>
+                    <input type="password" id="password" name="_password" class="form-control"/>
+                </div>
+            </div>
+            <button class="btn btn-primary mt-3 float-end" type="submit">Connexion</button>
+            <input type="hidden" name="_target_path" value="/"/>
+        </form>
+    </div>
+{% endblock %}

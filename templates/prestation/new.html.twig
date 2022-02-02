@@ -1,0 +1,51 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Prestation{% endblock %}
+
+{% block body %}
+    {{ include('components/_side.html.twig') }}
+
+
+<div class="right">
+    <h1 class="text-center mt-5">Création d'une nouvelle prestation</h1>
+    <div class="card-etablisement mt-5">
+        {{ form_start(form) }}
+        {{ form_errors(form) }}
+        <div class="row me-2 ms-2 mt-2">
+            <div class="col-sm-6 col-md-6 col-lg-6">
+                <label class="form-label">Nom des établissements</label>
+                {{ form_widget(form.etablissement) }}
+            </div>
+            <div class="col-sm-6 col-md-6 col-lg-6">
+                <label class="form-label">Prix</label>
+                {{ form_widget(form.price) }}
+            </div>
+        </div>
+        <div class="row me-2 ms-2 mt-2">
+            <div class="col">
+                <label class="form-label">Type de prestation</label>
+                {{ form_widget(form.type) }}
+            </div>
+        </div>
+        <div class="row me-2 ms-2 mt-2 ">
+            <div class="col-sm-6 col-md-6 col-lg-6">
+                <label class="form-label">Moyen de paiement</label>
+                {{ form_widget(form.paymentmethod) }}
+            </div>
+            <div class="col-sm-6 col-md-6 col-lg-6">
+                <label class="form-label">Statut du paiement</label>
+                {{ form_widget(form.paymentstatus) }}
+            </div>
+            <div class="col">
+            </div>
+        </div>
+        <div class="col mt-2 me-4 ms-4">
+            <label class="form-label">Date de la prestation</label>
+            {{ form_widget(form.date) }}
+        </div>
+    </div>
+    <button type="submit" class="btn btn-primary float-end mt-5 mb-2 me-3">Envoyé</button>
+
+</div>
+    {{ form_end(form) }}
+{% endblock %}

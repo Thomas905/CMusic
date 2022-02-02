@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Recherche d'un établissement{% endblock %}
+
+{% block body %}
+
+    {{ include('components/_side.html.twig') }}
+    <div class="right">
+    <h1 class="text-center mt-5">Recherche d'un etablissement </h1>
+    <a href="{{ path('etablissement_new') }}" class="fw-bold mb-7 text-center text-decoration-underline">Encoder un nouveau établissement</a>
+    <div class="table-responsive">
+        <table class="table table-bordered shadow-cmusic">
+        <thead>
+            <tr>
+                <th>Nom de l'établissement <img id="loop" src="{{ asset('build/images/loop.png') }}" alt="loop" class="ms-3"></th>
+                <th>Adresse</th>
+                <th>Personne de contact</th>
+                <th>Téléphone</th>
+                <th>Adresse mail</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for etablissement in etablisements %}
+                <tr>
+                    <td><a href="{{ path('etablissement_show', {'id': etablissement.id}) }}">{{ etablissement.name }}</td>
+                    <td>{{ etablissement.adress }} {{ etablissement.postalcode }} {{ etablissement.city }}</td>
+                    <td>{{ etablissement.nameContact }}</td>
+                    <td>{{ etablissement.phone }}</td>
+                    <td>{{ etablissement.email }}</td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="10">Aucun établissement trouvé</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+</div>
+
+{% endblock %}

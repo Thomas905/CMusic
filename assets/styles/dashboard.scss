@@ -1,0 +1,117 @@
+.side-bar-content{
+  background-color: $secondary;
+  height: 5rem;
+  width: 100%;
+  position: fixed;
+  bottom: 0;
+  overflow: hidden;
+  .header-side{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 1rem;
+  }
+  .img-side{
+    width: 2rem;
+  }
+  .title-side{
+    display: none;
+  }
+  .text-side-icon{
+    display: none;
+  }
+}
+
+.content-side-bar-desktop{
+  display: none;
+}
+
+.right{
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100vh;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  .card-etablisement{
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+  }
+}
+
+.right-login{
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100vh;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  .card-login{
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+  }
+}
+
+.shadow-cmusic{
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+}
+
+
+@media only screen and (min-width: 1024px) {
+  .side-bar-content{
+    background-color: $secondary;
+    height: 100vh;
+    width: 20rem;
+    .header-side{
+      display: none;
+      .img-side{
+        display: block;
+      }
+    }
+    .title-side{
+      display: flex;
+      width: 100%;
+      justify-content: center;
+      padding-top: 2rem;
+
+    }
+
+    .text-side-icon{
+      display: flex;
+    }
+  }
+  .content-side-bar-desktop{
+    display: block;
+  }
+
+  .right{
+    width: 80%;
+    padding-left: 10rem;
+    padding-right: 10rem;
+    float: right;
+    .card-etablisement{
+      padding-top: 1rem;
+      padding-bottom: 1rem;
+      box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+    }
+  }
+
+
+}
+
+@media only screen and (min-width: 1400px) {
+  .right-login{
+    width: 80%;
+    padding-left: 15rem;
+    padding-right: 15rem;
+    float: right;
+    .card-login{
+      padding-top: 1rem;
+      padding-bottom: 1rem;
+      box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+    }
+  }
+}
+
