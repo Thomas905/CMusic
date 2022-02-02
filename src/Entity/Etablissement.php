@@ -10,7 +10,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * @ORM\Entity(repositoryClass=EtablisementRepository::class)
  */
-class Etablisement
+class Etablissement
 {
     /**
      * @ORM\Id
@@ -60,7 +60,7 @@ class Etablisement
     private $note;
 
     /**
-     * @ORM\OneToMany(targetEntity=Prestation::class, mappedBy="etablisement")
+     * @ORM\OneToMany(targetEntity=Prestation::class, mappedBy="etablissement")
      */
     private $prestation;
 
@@ -182,7 +182,7 @@ class Etablisement
     {
         if (!$this->prestation->contains($prestation)) {
             $this->prestation[] = $prestation;
-            $prestation->setEtablisement($this);
+            $prestation->setEtablissement($this);
         }
 
         return $this;
@@ -192,11 +192,15 @@ class Etablisement
     {
         if ($this->prestation->removeElement($prestation)) {
             // set the owning side to null (unless already changed)
-            if ($prestation->getEtablisement() === $this) {
-                $prestation->setEtablisement(null);
+            if ($prestation->getEtablissement() === $this) {
+                $prestation->setEtablissement(null);
             }
         }
 
         return $this;
+    }
+
+    public function __toString() {
+        return $this->adress;
     }
 }

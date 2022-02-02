@@ -39,20 +39,20 @@ class Prestation
     private Bool $paymentstatus;
 
     /**
-     * @ORM\Column(type="datetime")
-     */
-    private $date;
-
-    /**
      * @ORM\Column(type="text", nullable=true)
      */
     private $reference;
 
     /**
-     * @ORM\ManyToOne(targetEntity=Etablisement::class, inversedBy="prestation")
+     * @ORM\ManyToOne(targetEntity=Etablissement::class, inversedBy="prestation")
      * @ORM\JoinColumn(nullable=false)
      */
-    private $etablisement;
+    private $etablissement;
+
+    /**
+     * @ORM\Column(type="date")
+     */
+    private $date;
 
     public function getId(): ?int
     {
@@ -107,18 +107,6 @@ class Prestation
         return $this;
     }
 
-    public function getDate(): ?\DateTimeInterface
-    {
-        return $this->date;
-    }
-
-    public function setDate(\DateTimeInterface $date): self
-    {
-        $this->date = $date;
-
-        return $this;
-    }
-
     public function getReference(): ?string
     {
         return $this->reference;
@@ -131,19 +119,31 @@ class Prestation
         return $this;
     }
 
-    public function getEtablisement(): ?Etablisement
+    public function getEtablissement(): ?Etablissement
     {
-        return $this->etablisement;
+        return $this->etablissement;
     }
 
-    public function setEtablisement(?Etablisement $etablisement): self
+    public function setEtablissement(?Etablissement $etablissement): self
     {
-        $this->etablisement = $etablisement;
+        $this->etablissement = $etablissement;
 
         return $this;
     }
 
     public function __toString() {
         return $this->payment_methods;
+    }
+
+    public function getDate(): ?\DateTimeInterface
+    {
+        return $this->date;
+    }
+
+    public function setDate(\DateTimeInterface $date): self
+    {
+        $this->date = $date;
+
+        return $this;
     }
 }
