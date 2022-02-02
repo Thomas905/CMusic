@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\EtablisementRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -56,6 +58,16 @@ class Etablisement
      * @ORM\Column(type="text", nullable=true)
      */
     private $note;
+
+    /**
+     * @ORM\OneToMany(targetEntity=Prestation::class, mappedBy="etablisement")
+     */
+    private $prestation;
+
+    public function __construct()
+    {
+        $this->prestation = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -154,6 +166,36 @@ class Etablisement
     public function setNote(?string $note): self
     {
         $this->note = $note;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Prestation[]
+     */
+    public function getPrestation(): Collection
+    {
+        return $this->prestation;
+    }
+
+    public function addPrestation(Prestation $prestation): self
+    {
+        if (!$this->prestation->contains($prestation)) {
+            $this->prestation[] = $prestation;
+            $prestation->setEtablisement($this);
+        }
+
+        return $this;
+    }
+
+    public function removePrestation(Prestation $prestation): self
+    {
+        if ($this->prestation->removeElement($prestation)) {
+            // set the owning side to null (unless already changed)
+            if ($prestation->getEtablisement() === $this) {
+                $prestation->setEtablisement(null);
+            }
+        }
 
         return $this;
     }

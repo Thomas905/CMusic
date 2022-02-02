@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use App\Repository\PrestationRepository;
 use Doctrine\ORM\Mapping as ORM;
+use phpDocumentor\Reflection\Types\Boolean;
 
 /**
  * @ORM\Entity(repositoryClass=PrestationRepository::class)
@@ -25,17 +26,17 @@ class Prestation
     /**
      * @ORM\Column(type="text", nullable=true)
      */
-    private $note;
+    private string $note;
 
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $payment_method;
+    private string $paymentmethod;
 
     /**
      * @ORM\Column(type="boolean")
      */
-    private $payment_status;
+    private Bool $paymentstatus;
 
     /**
      * @ORM\Column(type="datetime")
@@ -46,6 +47,12 @@ class Prestation
      * @ORM\Column(type="text", nullable=true)
      */
     private $reference;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=Etablisement::class, inversedBy="prestation")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $etablisement;
 
     public function getId(): ?int
     {
@@ -78,24 +85,24 @@ class Prestation
 
     public function getPaymentMethod(): ?string
     {
-        return $this->payment_method;
+        return $this->paymentmethod;
     }
 
-    public function setPaymentMethod(string $payment_method): self
+    public function setPaymentMethod(string $paymentmethod): self
     {
-        $this->payment_method = $payment_method;
+        $this->paymentmethod = $paymentmethod;
 
         return $this;
     }
 
     public function getPaymentStatus(): ?bool
     {
-        return $this->payment_status;
+        return $this->paymentstatus;
     }
 
-    public function setPaymentStatus(bool $payment_status): self
+    public function setPaymentStatus(bool $paymentstatus): self
     {
-        $this->payment_status = $payment_status;
+        $this->paymentstatus = $paymentstatus;
 
         return $this;
     }
@@ -122,5 +129,21 @@ class Prestation
         $this->reference = $reference;
 
         return $this;
+    }
+
+    public function getEtablisement(): ?Etablisement
+    {
+        return $this->etablisement;
+    }
+
+    public function setEtablisement(?Etablisement $etablisement): self
+    {
+        $this->etablisement = $etablisement;
+
+        return $this;
+    }
+
+    public function __toString() {
+        return $this->payment_methods;
     }
 }

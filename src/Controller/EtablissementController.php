@@ -19,7 +19,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class EtablissementController extends AbstractController
 {
     /**
-     * @Route("/", name="etablisement_index", methods={"GET"})
+     * @Route("/", name="etablissement_index", methods={"GET"})
      */
     public function index(EtablisementRepository $etablisementRepository): Response
     {
@@ -29,7 +29,7 @@ class EtablissementController extends AbstractController
     }
 
     /**
-     * @Route("/new", name="etablisement_new", methods={"GET", "POST"})
+     * @Route("/new", name="etablissement_new", methods={"GET", "POST"})
      */
     public function new(Request $request, EntityManagerInterface $entityManager): Response
     {
@@ -51,7 +51,7 @@ class EtablissementController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="etablisement_show", methods={"GET"})
+     * @Route("/{id}", name="etablissement_show", methods={"GET"})
      */
     public function show(Etablisement $etablisement): Response
     {
@@ -61,7 +61,7 @@ class EtablissementController extends AbstractController
     }
 
     /**
-     * @Route("/{id}/edit", name="etablisement_edit", methods={"GET", "POST"})
+     * @Route("/{id}/edit", name="etablissement_edit", methods={"GET", "POST"})
      */
     public function edit(Request $request, Etablisement $etablisement, EntityManagerInterface $entityManager): Response
     {
@@ -81,7 +81,7 @@ class EtablissementController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="etablisement_delete", methods={"POST"})
+     * @Route("/{id}", name="etablissement_delete", methods={"POST"})
      */
     public function delete(Request $request, Etablisement $etablisement, EntityManagerInterface $entityManager): Response
     {
