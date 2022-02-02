@@ -2,7 +2,7 @@
 
 namespace App\Controller;
 
-use App\Entity\Etablisement;
+use App\Entity\Etablissement;
 use App\Form\EtablisementType;
 use App\Repository\EtablisementRepository;
 use Doctrine\ORM\EntityManagerInterface;
@@ -33,7 +33,7 @@ class EtablissementController extends AbstractController
      */
     public function new(Request $request, EntityManagerInterface $entityManager): Response
     {
-        $etablisement = new Etablisement();
+        $etablisement = new Etablissement();
         $form = $this->createForm(EtablisementType::class, $etablisement);
         $form->handleRequest($request);
 
@@ -41,7 +41,7 @@ class EtablissementController extends AbstractController
             $entityManager->persist($etablisement);
             $entityManager->flush();
 
-            return $this->redirectToRoute('etablisement_index', [], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('etablissement_index', [], Response::HTTP_SEE_OTHER);
         }
 
         return $this->renderForm('etablissement/new.html.twig', [
@@ -53,7 +53,7 @@ class EtablissementController extends AbstractController
     /**
      * @Route("/{id}", name="etablissement_show", methods={"GET"})
      */
-    public function show(Etablisement $etablisement): Response
+    public function show(Etablissement $etablisement): Response
     {
         return $this->render('etablissement/show.html.twig', [
             'etablissement' => $etablisement,
@@ -63,7 +63,7 @@ class EtablissementController extends AbstractController
     /**
      * @Route("/{id}/edit", name="etablissement_edit", methods={"GET", "POST"})
      */
-    public function edit(Request $request, Etablisement $etablisement, EntityManagerInterface $entityManager): Response
+    public function edit(Request $request, Etablissement $etablisement, EntityManagerInterface $entityManager): Response
     {
         $form = $this->createForm(EtablisementType::class, $etablisement);
         $form->handleRequest($request);
@@ -83,7 +83,7 @@ class EtablissementController extends AbstractController
     /**
      * @Route("/{id}", name="etablissement_delete", methods={"POST"})
      */
-    public function delete(Request $request, Etablisement $etablisement, EntityManagerInterface $entityManager): Response
+    public function delete(Request $request, Etablissement $etablisement, EntityManagerInterface $entityManager): Response
     {
         if ($this->isCsrfTokenValid('delete'.$etablisement->getId(), $request->request->get('_token'))) {
             $entityManager->remove($etablisement);

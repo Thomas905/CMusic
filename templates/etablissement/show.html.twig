@@ -24,18 +24,22 @@
                     <tr>
                         <td>{{ prestation.date|date("m/d/Y") }}</td>
                         <td>{{ prestation.price }} €</td>
-                        <td>{{ prestation.paymentmethod }}</td>
-                        <td><a href="{{ path('etablissement_edit', {'id': prestation.id}) }}"><img src="{{ asset('build/images/pen.png') }}" alt="pen"></a></td>
+                        {% if prestation.paymentstatus == 0 %}
+                            <td><span class="badge badge-danger">Non payé</span></td>
+                            {% else %}
+                                <td><span class="badge badge-success">Payé</span></td>
+                        {% endif %}
+                        <td><a href="{{ path('prestation_edit', {'id': prestation.id}) }}"><img src="{{ asset('build/images/pen.png') }}" alt="pen"></a></td>
                     </tr>
                 {% endfor %}
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td><a href="{{ path('prestation_new') }}"><img src="{{ asset('build/images/plus.png') }}" alt="add"></a></td>
+                </tr>
                 </tbody>
             </table>
         </div>
     </div>
-
-
-
-
-
-    {{ include('etablissement/_delete_form.html.twig') }}
 {% endblock %}

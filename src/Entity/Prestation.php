@@ -24,11 +24,6 @@ class Prestation
     private $price;
 
     /**
-     * @ORM\Column(type="text", nullable=true)
-     */
-    private string $note;
-
-    /**
      * @ORM\Column(type="string", length=255)
      */
     private string $paymentmethod;
@@ -39,20 +34,25 @@ class Prestation
     private Bool $paymentstatus;
 
     /**
-     * @ORM\Column(type="datetime")
-     */
-    private $date;
-
-    /**
      * @ORM\Column(type="text", nullable=true)
      */
     private $reference;
 
     /**
-     * @ORM\ManyToOne(targetEntity=Etablisement::class, inversedBy="prestation")
+     * @ORM\ManyToOne(targetEntity=Etablissement::class, inversedBy="prestation")
      * @ORM\JoinColumn(nullable=false)
      */
-    private $etablisement;
+    private $etablissement;
+
+    /**
+     * @ORM\Column(type="date")
+     */
+    private $date;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $type;
 
     public function getId(): ?int
     {
@@ -67,18 +67,6 @@ class Prestation
     public function setPrice(int $price): self
     {
         $this->price = $price;
-
-        return $this;
-    }
-
-    public function getNote(): ?string
-    {
-        return $this->note;
-    }
-
-    public function setNote(?string $note): self
-    {
-        $this->note = $note;
 
         return $this;
     }
@@ -107,18 +95,6 @@ class Prestation
         return $this;
     }
 
-    public function getDate(): ?\DateTimeInterface
-    {
-        return $this->date;
-    }
-
-    public function setDate(\DateTimeInterface $date): self
-    {
-        $this->date = $date;
-
-        return $this;
-    }
-
     public function getReference(): ?string
     {
         return $this->reference;
@@ -131,19 +107,43 @@ class Prestation
         return $this;
     }
 
-    public function getEtablisement(): ?Etablisement
+    public function getEtablissement(): ?Etablissement
     {
-        return $this->etablisement;
+        return $this->etablissement;
     }
 
-    public function setEtablisement(?Etablisement $etablisement): self
+    public function setEtablissement(?Etablissement $etablissement): self
     {
-        $this->etablisement = $etablisement;
+        $this->etablissement = $etablissement;
 
         return $this;
     }
 
     public function __toString() {
         return $this->payment_methods;
+    }
+
+    public function getDate(): ?\DateTimeInterface
+    {
+        return $this->date;
+    }
+
+    public function setDate(\DateTimeInterface $date): self
+    {
+        $this->date = $date;
+
+        return $this;
+    }
+
+    public function getType(): ?string
+    {
+        return $this->type;
+    }
+
+    public function setType(string $type): self
+    {
+        $this->type = $type;
+
+        return $this;
     }
 }

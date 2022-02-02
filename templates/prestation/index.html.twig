@@ -1,0 +1,50 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Prestation index{% endblock %}
+
+{% block body %}
+{{ include('components/_side.html.twig') }}
+    <div class="right">
+        <h1 class="text-center mt-5">Rechercher une prestation</h1>
+        <a href="{{ path('prestation_new') }}" class="fw-bold mb-7 text-center text-decoration-underline">Encoder une nouvelle prestation</a>
+        <div class="table-responsive">
+            <table class="table table-bordered shadow-cmusic">
+            <thead>
+            <tr>
+                <th>Type de prestation</th>
+                <th>Nom de l'établissement <img id="loop" src="{{ asset('build/images/loop.png') }}" alt="loop" class="ms-3"></th>
+                <th>Prix</th>
+                <th>Mode de paiement</th>
+                <th>Statut du paiement</th>
+                <th>Date</th>
+                <th>actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for prestation in prestations %}
+                <tr>
+                    <td>{{ prestation.type }}</td>
+                    <td><a href="{{ path('etablissement_show', {'id': prestation.id}) }}">{{ prestation.etablissement.name }}</a></td>
+                    <td>{{ prestation.price }} €</td>
+                    <td>{{ prestation.paymentmethod }}</td>
+                        {% if prestation.paymentstatus == 0 %}
+                            <td><span class="badge badge-danger">Non payé</span></td>
+                        {% else %}
+                            <td><span class="badge badge-success">Payé</span></td>
+                        {% endif %}
+                    <td>{{ prestation.date|date("m/d/Y") }}</td>
+                    <td><a href="{{ path('prestation_edit', {'id': prestation.id}) }}"><img src="{{ asset('build/images/pen.png') }}" alt="pen"></a></td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="8">no records found</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+        </div>
+    </div>
+
+
+    <a href="{{ path('prestation_new') }}">Create new</a>
+{% endblock %}

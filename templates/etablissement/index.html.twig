@@ -5,7 +5,7 @@
 {% block body %}
 
     {{ include('components/_side.html.twig') }}
-<div class="right">
+    <div class="right">
     <h1 class="text-center mt-5">Recherche d'un etablissement </h1>
     <a href="{{ path('etablissement_new') }}" class="fw-bold mb-7 text-center text-decoration-underline">Encoder un nouveau établissement</a>
     <div class="table-responsive">
@@ -17,20 +17,16 @@
                 <th>Personne de contact</th>
                 <th>Téléphone</th>
                 <th>Adresse mail</th>
-                <th>Action</th>
             </tr>
             </thead>
             <tbody>
-            {% for etablisement in etablisements %}
+            {% for etablissement in etablisements %}
                 <tr>
-                    <td>{{ etablisement.name }}</td>
-                    <td>{{ etablisement.adress }} {{ etablisement.postalcode }} {{ etablisement.city }}</td>
-                    <td>{{ etablisement.nameContact }}</td>
-                    <td>{{ etablisement.phone }}</td>
-                    <td>{{ etablisement.email }}</td>
-                    <td class="d-flex justify-content-center">
-                        <a href="{{ path('etablissement_show', {'id': etablisement.id}) }}"><img src="{{ asset('build/images/show.png') }}" alt="show"></a>
-                    </td>
+                    <td><a href="{{ path('etablissement_show', {'id': etablissement.id}) }}">{{ etablissement.name }}</td>
+                    <td>{{ etablissement.adress }} {{ etablissement.postalcode }} {{ etablissement.city }}</td>
+                    <td>{{ etablissement.nameContact }}</td>
+                    <td>{{ etablissement.phone }}</td>
+                    <td>{{ etablissement.email }}</td>
                 </tr>
             {% else %}
                 <tr>
