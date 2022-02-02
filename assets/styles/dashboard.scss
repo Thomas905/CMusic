@@ -1,0 +1,56 @@
+.side-bar-content{
+  background-color: $secondary;
+  height: 5rem;
+  width: 100%;
+  position: fixed;
+  bottom: 0;
+  overflow: hidden;
+  .header-side{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 1rem;
+  }
+  .img-side{
+    width: 2rem;
+  }
+  .title-side{
+    display: none;
+  }
+  .text-side-icon{
+    display: none;
+  }
+}
+
+.content-side-bar-desktop{
+  display: none;
+}
+
+
+@media only screen and (min-width: 1024px) {
+  .side-bar-content{
+    background-color: $secondary;
+    height: 100vh;
+    width: 20rem;
+    .header-side{
+      display: none;
+      .img-side{
+        display: block;
+      }
+    }
+    .title-side{
+      display: flex;
+      width: 100%;
+      justify-content: center;
+      padding-top: 2rem;
+
+    }
+
+    .text-side-icon{
+      display: flex;
+    }
+  }
+  .content-side-bar-desktop{
+    display: block;
+  }
+}
