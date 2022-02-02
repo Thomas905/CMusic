@@ -1,0 +1,28 @@
+<h1 style="text-align: center; text-decoration: underline">Facture {{ prestation.id }}</h1>
+<h2 style=" text-align:center; text-decoration: underline;">Entre les soussignés</h2>
+<h3 style="text-decoration: underline">Prestataire :</h3>
+<p>Nom Prénom : <span style="font-weight: bold">{{ user.lastname }} {{ user.firstname }}</span></p>
+<p>Adresse : <span style="font-weight: bold">{{ user.adress }} {{ user.postalcode }} {{ user.city }}</span></p>
+<p>Téléphone : <span style="font-weight: bold">{{ user.phone }}</span></p>
+
+<h3 style="text-decoration: underline">Organisateur :</h3>
+<p>Nom prénom : <span style="font-weight: bold">{{ prestation.etablissement.name }}</span></p>
+<p>Adresse : <span style="font-weight: bold">{{ prestation.etablissement.adress }} {{ prestation.etablissement.postalcode }} {{ prestation.etablissement.city }}</span></p>
+<p>Téléphone : <span style="font-weight: bold">{{ prestation.etablissement.phone }}</span></p>
+<p>Adresse mail : <span style="font-weight: bold">{{ prestation.etablissement.email }}</span></p>
+
+<h3 style="text-decoration: underline">Prestation :</h3>
+<p style="text-decoration: underline">{{ prestation.type }}</p>
+<p>{{ prestation.date|date("d/m/Y") }}</p>
+<p>Horaire : de 14h00 à 17h00 (horaires facultatif suivant l'organisateur)</p>
+<p>Lieu : {{ prestation.etablissement.city }}</p>
+
+<h3 style="text-decoration: underline">Rémunération :</h3>
+<p>Il a été convenu un tarif forfaitaire de <span style="font-weight: bold">{{ prestation.price }}</span> € TTC pour les frais de déplacement.</p>
+
+<p style="text-align: center">Fait en deux exemplaires à {{ prestation.etablissement.city }} le {{ prestation.date|date("d/m/Y") }}</p>
+
+<div style="display: flex; justify-content: space-around">
+    <p style="text-decoration: underline; margin-bottom: 10rem">Le prestataire</p>
+    <p style="text-decoration: underline;">L’organisateur</p>
+</div>
