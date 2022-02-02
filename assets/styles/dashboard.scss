@@ -40,6 +40,20 @@
   }
 }
 
+.right-login{
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100vh;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  .card-login{
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+  }
+}
+
 .shadow-cmusic{
   box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
 }
@@ -83,4 +97,21 @@
       box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
     }
   }
+
+
 }
+
+@media only screen and (min-width: 1400px) {
+  .right-login{
+    width: 80%;
+    padding-left: 15rem;
+    padding-right: 15rem;
+    float: right;
+    .card-login{
+      padding-top: 1rem;
+      padding-bottom: 1rem;
+      box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+    }
+  }
+}
+
