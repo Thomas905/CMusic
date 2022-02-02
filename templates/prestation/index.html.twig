@@ -24,7 +24,7 @@
             {% for prestation in prestations %}
                 <tr>
                     <td>{{ prestation.type }}</td>
-                    <td><a href="{{ path('etablissement_show', {'id': prestation.id}) }}">{{ prestation.etablissement.name }}</a></td>
+                    <td><a href="{{ path('etablissement_show', {'id': prestation.etablissement.id}) }}">{{ prestation.etablissement.name }}</a></td>
                     <td>{{ prestation.price }} €</td>
                     <td>{{ prestation.paymentmethod }}</td>
                         {% if prestation.paymentstatus == 0 %}
@@ -33,11 +33,12 @@
                             <td><span class="badge badge-success">Payé</span></td>
                         {% endif %}
                     <td>{{ prestation.date|date("m/d/Y") }}</td>
-                    <td><a href="{{ path('prestation_edit', {'id': prestation.id}) }}"><img src="{{ asset('build/images/pen.png') }}" alt="pen"></a></td>
+                    <td><a href="{{ path('prestation_edit', {'id': prestation.id}) }}"><img src="{{ asset('build/images/pen.png') }}" alt="pen"></a>
+                        <a href="{{ path('prestation_pdf_invoice', {'id': prestation.id}) }}"><img src="{{ asset('build/images/invoice-black.png') }}" alt="invoice" class="ms-3"></a></td>
                 </tr>
             {% else %}
                 <tr>
-                    <td colspan="8">no records found</td>
+                    <td colspan="8">Aucune prestation touvé</td>
                 </tr>
             {% endfor %}
             </tbody>

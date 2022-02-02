@@ -14,9 +14,10 @@
             <tr>
                 <th>Nom de l'établissement <img id="loop" src="{{ asset('build/images/loop.png') }}" alt="loop" class="ms-3"></th>
                 <th>Adresse</th>
-                <th>Personne de contact</th>
+                <th>Annimateur/trice</th>
                 <th>Téléphone</th>
                 <th>Adresse mail</th>
+                <th>Note</th>
             </tr>
             </thead>
             <tbody>
@@ -27,6 +28,7 @@
                     <td>{{ etablissement.nameContact }}</td>
                     <td>{{ etablissement.phone }}</td>
                     <td>{{ etablissement.email }}</td>
+                    <td>{{ etablissement.note }}</td>
                 </tr>
             {% else %}
                 <tr>

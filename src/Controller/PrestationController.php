@@ -10,6 +10,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Sasedev\MpdfBundle\Factory\MpdfFactory;
 
 /**
  * @Route("/prestation")
@@ -24,6 +25,29 @@ class PrestationController extends AbstractController
         return $this->render('prestation/index.html.twig', [
             'prestations' => $prestationRepository->findAll(),
         ]);
+    }
+
+
+    /**
+     * @Route("/{id}/generate/invoice", name="prestation_pdf_invoice", methods={"GET"})
+     */
+    public function show(Prestation $prestation, MpdfFactory $MpdfFactory): Response
+    {
+        $user = $this->getUser();
+        $mPdf = $MpdfFactory->createMpdfObject([
+            'mode' => 'utf-8',
+            'format' => 'A4',
+            'margin_header' => 5,
+            'margin_footer' => 5,
+            'orientation' => 'P'
+        ]);
+        $mPdf->SetHTMLHeader($this->renderView('pdf/invoice.html.twig', [
+            'prestation' => $prestation,
+            'user' => $user
+        ]));
+        return $MpdfFactory->createDownloadResponse($mPdf, "file.pdf");
+
+
     }
 
     /**
