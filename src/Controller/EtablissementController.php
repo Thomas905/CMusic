@@ -13,17 +13,17 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
- * @Route("/etablisement")
+ * @Route("/etablissement")
  * @IsGranted("ROLE_USER")
  */
-class EtablisementController extends AbstractController
+class EtablissementController extends AbstractController
 {
     /**
      * @Route("/", name="etablisement_index", methods={"GET"})
      */
     public function index(EtablisementRepository $etablisementRepository): Response
     {
-        return $this->render('etablisement/index.html.twig', [
+        return $this->render('etablissement/index.html.twig', [
             'etablisements' => $etablisementRepository->findAll(),
         ]);
     }
@@ -44,8 +44,8 @@ class EtablisementController extends AbstractController
             return $this->redirectToRoute('etablisement_index', [], Response::HTTP_SEE_OTHER);
         }
 
-        return $this->renderForm('etablisement/new.html.twig', [
-            'etablisement' => $etablisement,
+        return $this->renderForm('etablissement/new.html.twig', [
+            'etablissement' => $etablisement,
             'form' => $form,
         ]);
     }
@@ -55,8 +55,8 @@ class EtablisementController extends AbstractController
      */
     public function show(Etablisement $etablisement): Response
     {
-        return $this->render('etablisement/show.html.twig', [
-            'etablisement' => $etablisement,
+        return $this->render('etablissement/show.html.twig', [
+            'etablissement' => $etablisement,
         ]);
     }
 
@@ -74,8 +74,8 @@ class EtablisementController extends AbstractController
             return $this->redirectToRoute('etablisement_index', [], Response::HTTP_SEE_OTHER);
         }
 
-        return $this->renderForm('etablisement/edit.html.twig', [
-            'etablisement' => $etablisement,
+        return $this->renderForm('etablissement/edit.html.twig', [
+            'etablissement' => $etablisement,
             'form' => $form,
         ]);
     }

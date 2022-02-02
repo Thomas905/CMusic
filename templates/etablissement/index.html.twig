@@ -3,22 +3,25 @@
 {% block title %}Etablisement index{% endblock %}
 
 {% block body %}
-    <h1>Etablisement index</h1>
+
+    {{ include('components/_side.html.twig') }}
+<div class="right">
+    <h1>Recherche d'un etablissement </h1>
 
     <table class="table">
         <thead>
-            <tr>
-                <th>Id</th>
-                <th>Name</th>
-                <th>Adress</th>
-                <th>City</th>
-                <th>Postalcode</th>
-                <th>Name_contact</th>
-                <th>Phone</th>
-                <th>Email</th>
-                <th>Note</th>
-                <th>actions</th>
-            </tr>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Adress</th>
+            <th>City</th>
+            <th>Postalcode</th>
+            <th>Name_contact</th>
+            <th>Phone</th>
+            <th>Email</th>
+            <th>Note</th>
+            <th>actions</th>
+        </tr>
         </thead>
         <tbody>
         {% for etablisement in etablisements %}
@@ -46,4 +49,6 @@
     </table>
 
     <a href="{{ path('etablisement_new') }}">Create new</a>
+</div>
+
 {% endblock %}
