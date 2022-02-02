@@ -34,7 +34,6 @@ class PrestationController extends AbstractController
         $prestation = new Prestation();
         $form = $this->createForm(PrestationType::class, $prestation);
         $form->handleRequest($request);
-
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager->persist($prestation);
             $entityManager->flush();
@@ -45,16 +44,6 @@ class PrestationController extends AbstractController
         return $this->renderForm('prestation/new.html.twig', [
             'prestation' => $prestation,
             'form' => $form,
-        ]);
-    }
-
-    /**
-     * @Route("/{id}", name="prestation_show", methods={"GET"})
-     */
-    public function show(Prestation $prestation): Response
-    {
-        return $this->render('prestation/show.html.twig', [
-            'prestation' => $prestation,
         ]);
     }
 

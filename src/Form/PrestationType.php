@@ -18,7 +18,7 @@ class PrestationType extends AbstractType
     {
         $builder
             ->add('price')
-            ->add('note')
+            ->add('type')
             ->add('paymentmethod', ChoiceType::class, [
                 'choices' => [
                     'Espèce' => 'cash',
@@ -38,7 +38,6 @@ class PrestationType extends AbstractType
                     'year' => 'Année', 'month' => 'Mois', 'day' => 'Jour',
                 ],
             ])
-            ->add('reference')
             ->add('etablissement', EntityType::class, [
                 'class' => Etablissement::class,
                 'choice_label' => 'name'

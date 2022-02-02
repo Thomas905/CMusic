@@ -29,17 +29,11 @@
                             {% else %}
                                 <td><span class="badge badge-success">Payé</span></td>
                         {% endif %}
-                        <td><a href="{{ path('etablissement_edit', {'id': prestation.id}) }}"><img src="{{ asset('build/images/pen.png') }}" alt="pen"></a></td>
+                        <td><a href="{{ path('prestation_edit', {'id': prestation.id}) }}"><img src="{{ asset('build/images/pen.png') }}" alt="pen"></a></td>
                     </tr>
                 {% endfor %}
                 </tbody>
             </table>
         </div>
     </div>
-
-
-
-
-
-    {{ include('etablissement/_delete_form.html.twig') }}
 {% endblock %}

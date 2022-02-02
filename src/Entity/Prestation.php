@@ -24,11 +24,6 @@ class Prestation
     private $price;
 
     /**
-     * @ORM\Column(type="text", nullable=true)
-     */
-    private string $note;
-
-    /**
      * @ORM\Column(type="string", length=255)
      */
     private string $paymentmethod;
@@ -54,6 +49,11 @@ class Prestation
      */
     private $date;
 
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $type;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -67,18 +67,6 @@ class Prestation
     public function setPrice(int $price): self
     {
         $this->price = $price;
-
-        return $this;
-    }
-
-    public function getNote(): ?string
-    {
-        return $this->note;
-    }
-
-    public function setNote(?string $note): self
-    {
-        $this->note = $note;
 
         return $this;
     }
@@ -143,6 +131,18 @@ class Prestation
     public function setDate(\DateTimeInterface $date): self
     {
         $this->date = $date;
+
+        return $this;
+    }
+
+    public function getType(): ?string
+    {
+        return $this->type;
+    }
+
+    public function setType(string $type): self
+    {
+        $this->type = $type;
 
         return $this;
     }

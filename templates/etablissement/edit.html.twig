@@ -52,10 +52,9 @@
             </div>
         </div>
         <button type="submit" class="btn btn-primary float-end mt-5 mb-2 me-3">Modifier</button>
-
+        {{ form_end(form) }}
+        {{ include('etablissement/_delete_form.html.twig') }}
     </div>
-    {{ form_end(form) }}
-    {{ include('etablissement/_delete_form.html.twig') }}
 
 
 
