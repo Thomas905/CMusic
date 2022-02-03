@@ -73,6 +73,8 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
     /**
      * @ORM\Column(type="integer")
+     * @Assert\NotBlank(
+     *      message = "Le code postal est obligatoire.")
      */
     private $postalcode;
 
