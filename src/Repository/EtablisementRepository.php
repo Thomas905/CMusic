@@ -19,6 +19,18 @@ class EtablisementRepository extends ServiceEntityRepository
         parent::__construct($registry, Etablissement::class);
     }
 
+    public function findLikeName(string $name)
+    {
+        $queryBuilder = $this->createQueryBuilder('e')
+            ->where('e.name LIKE :name')
+            ->setParameter('name', '%' . $name . '%')
+            ->orderBy('e.name', 'ASC')
+            ->getQuery();
+
+        return $queryBuilder->getResult();
+    }
+
+
     // /**
     //  * @return Etablissement[] Returns an array of Etablissement objects
     //  */
