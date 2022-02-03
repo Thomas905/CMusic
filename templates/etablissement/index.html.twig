@@ -3,20 +3,25 @@
 {% block title %}Recherche d'un établissement{% endblock %}
 
 {% block body %}
-
     {{ include('components/_side.html.twig') }}
     <div class="right">
-    <h1 class="text-center mt-5">Recherche d'un etablissement </h1>
-    <a href="{{ path('etablissement_new') }}" class="fw-bold mb-7 text-center text-decoration-underline">Encoder un nouveau établissement</a>
+    <h1 class="text-center mt-5 mb-7">Recherche d'un etablissement </h1>
     <div class="table-responsive">
         <table class="table table-bordered shadow-cmusic">
         <thead>
             <tr>
-                <th>Nom de l'établissement <img id="loop" src="{{ asset('build/images/loop.png') }}" alt="loop" class="ms-3"></th>
+                <th>Nom de l'établissement <img onclick="loopdisplay()" src="{{ asset('build/images/loop.png') }}" alt="loop" class="ms-3">
+                    <div id="form-loop" style="display: none">
+                        {{ form_start(form) }}
+                        {{ form_widget(form.search) }}
+                        {{ form_end(form) }}
+                    </div>
+                </th>
                 <th>Adresse</th>
-                <th>Personne de contact</th>
+                <th>Annimateur/trice</th>
                 <th>Téléphone</th>
                 <th>Adresse mail</th>
+                <th>Note</th>
             </tr>
             </thead>
             <tbody>
@@ -27,6 +32,7 @@
                     <td>{{ etablissement.nameContact }}</td>
                     <td>{{ etablissement.phone }}</td>
                     <td>{{ etablissement.email }}</td>
+                    <td>{{ etablissement.note }}</td>
                 </tr>
             {% else %}
                 <tr>
@@ -36,7 +42,17 @@
             </tbody>
         </table>
     </div>
-
 </div>
+
+    <script>
+        function loopdisplay() {
+            let x = document.getElementById("form-loop");
+            if (x.style.display === "block") {
+                x.style.display = "none";
+            } else {
+                x.style.display = "block";
+            }
+        }
+    </script>
 
 {% endblock %}

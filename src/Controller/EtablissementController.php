@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Etablissement;
 use App\Form\EtablisementType;
+use App\Form\SearchEtablissementType;
 use App\Repository\EtablisementRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
@@ -19,12 +20,22 @@ use Symfony\Component\Routing\Annotation\Route;
 class EtablissementController extends AbstractController
 {
     /**
-     * @Route("/", name="etablissement_index", methods={"GET"})
+     * @Route("/", name="etablissement_index")
      */
-    public function index(EtablisementRepository $etablisementRepository): Response
+    public function index(Request $request,EtablisementRepository $etablisementRepository): Response
     {
+        $form = $this->createForm(SearchEtablissementType::class);
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+            $search = $form->getData()['search'];
+            $etablisement = $etablisementRepository->findLikeName($search);
+        } else {
+            $etablisement = $etablisementRepository->findAll();
+        }
+
         return $this->render('etablissement/index.html.twig', [
-            'etablisements' => $etablisementRepository->findAll(),
+            'etablisements' => $etablisement,
+            'form' => $form->createView(),
         ]);
     }
 
@@ -41,7 +52,7 @@ class EtablissementController extends AbstractController
             $entityManager->persist($etablisement);
             $entityManager->flush();
 
-            return $this->redirectToRoute('etablissement_index', [], Response::HTTP_SEE_OTHER);
+            return $this->redirect('/etablissement/' . $etablisement->getId());
         }
 
         return $this->renderForm('etablissement/new.html.twig', [
