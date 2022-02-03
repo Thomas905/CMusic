@@ -21,46 +21,64 @@ class Etablissement
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank(
+     *      message = "Le nom est obligatoire.")
      */
     private $name;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank(
+     *      message = "L'adresse est obligatoire.")
      */
     private $adress;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank(
+     *      message = "Le ville est obligatoire.")
      */
     private $city;
 
     /**
      * @ORM\Column(type="integer")
+     * @Assert\NotBlank(
+     *      message = "Le code postal est obligatoire.")
      */
     private $postalcode;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank(
+     *      message = "Le nom du contacte est obligatoire.")
      */
     private $name_contact;
 
     /**
      * @ORM\Column(type="integer")
+     * @Assert\NotBlank(
+     *      message = "Le téléphone est obligatoire.")
      */
     private $phone;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     * @Assert\NotBlank(
+     *      message = "L'adresse mail est obligatoire.")
      */
     private $email;
 
     /**
      * @ORM\Column(type="text", nullable=true)
+     * @Assert\NotBlank(
+     *      message = "La note est obligatoire.")
      */
     private $note;
 
     /**
      * @ORM\OneToMany(targetEntity=Prestation::class, mappedBy="etablissement")
+     * @Assert\NotBlank(
+     *      message = "La prestation est obligatoire.")
      */
     private $prestation;
 

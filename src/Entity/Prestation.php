@@ -5,6 +5,7 @@ namespace App\Entity;
 use App\Repository\PrestationRepository;
 use Doctrine\ORM\Mapping as ORM;
 use phpDocumentor\Reflection\Types\Boolean;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass=PrestationRepository::class)
@@ -20,16 +21,22 @@ class Prestation
 
     /**
      * @ORM\Column(type="integer")
+     * @Assert\NotBlank(
+     *      message = "Le prix  est obligatoire.")
      */
     private $price;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank(
+     *      message = "Le mode de paiement est obligatoire.")
      */
     private string $paymentmethod;
 
     /**
      * @ORM\Column(type="boolean")
+     * @Assert\NotBlank(
+     *      message = "Le statut du paiement est obligatoire.")
      */
     private Bool $paymentstatus;
 
@@ -41,16 +48,23 @@ class Prestation
     /**
      * @ORM\ManyToOne(targetEntity=Etablissement::class, inversedBy="prestation")
      * @ORM\JoinColumn(nullable=false)
+     * @Assert\NotBlank(
+     *      message = "L'établissement' est obligatoire.")
      */
     private $etablissement;
 
     /**
      * @ORM\Column(type="date")
+     * @Assert\NotBlank(
+     *      message = "La date est obligatoire.")
+     *
      */
     private $date;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank(
+     *      message = "Le type de prestation est obligatoire.")
      */
     private $type;
 
