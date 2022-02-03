@@ -23,6 +23,12 @@ class UserFixtures extends Fixture
         $user = new User();
         $user->setEmail('thomas@cmusic.com');
         $user->setRoles(['ROLE_USER']);
+        $user->setFirstname('Thomas');
+        $user->setLastname('Clarisse');
+        $user->setAdress('Rue des crevasses');
+        $user->setCity('Lille');
+        $user->setPostalcode('59000');
+        $user->setPhone('0471840307');
         $hashedPassword = $this->passwordHasher->hashPassword(
             $user,
             'thomaspassword'
