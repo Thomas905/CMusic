@@ -6,7 +6,7 @@
     {{ include('components/_side.html.twig') }}
     <div class="right">
         <h1 class="text-center mt-5">Modification de l'établissement</h1>
-        <a href="{{ path('etablissement_show', {'id': etablissement.id}) }}" class="fw-bold mb-7 text-center text-decoration-underline">Retourner sur l'établissements</a>
+        <p class="fw-bold mb-7 text-center text-decoration-underline"><a href="{{ path('etablissement_show', {'id': etablissement.id}) }}" >Retourner sur l'établissement</a></p>
         <div class="card-etablisement">
             {{ form_start(form) }}
             {{ form_errors(form) }}
