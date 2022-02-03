@@ -4,4 +4,19 @@
 
 {% block body %}
     {% include "components/_side.html.twig" %}
+    <div class="right">
+        <h1 class="text-center mt-5 mb-7">Bienvenue {{ user.firstname }} {{ user.lastname }}</h1>
+        <div class="shadow-cmusic p-4 rounded-4">
+                <div class="d-flex align-items-start p-0">
+                    <img src="{{ asset('build/images/prestation.png') }}" alt="invoice" class="card-logo">
+                    <h5 class="ms-3 me-3 text-card">Nombre total de prestation {{ countprestation }}</h5>
+                </div>
+        </div>
+        <div class="shadow-cmusic p-4 rounded-4 mt-5">
+            <div class="d-flex align-items-start p-0">
+                <img src="{{ asset('build/images/etablissement.png') }}" alt="etablissemennt" class="card-logo">
+                <h5 class="ms-3 me-3 text-card">Nombre total d'établissement {{ countetablissement }}</h5>
+            </div>
+        </div>
+    </div>
 {% endblock %}
