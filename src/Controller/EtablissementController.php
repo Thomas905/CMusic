@@ -41,7 +41,7 @@ class EtablissementController extends AbstractController
             $entityManager->persist($etablisement);
             $entityManager->flush();
 
-            return $this->redirectToRoute('etablissement_index', [], Response::HTTP_SEE_OTHER);
+            return $this->redirect('/etablissement/' . $etablisement->getId());
         }
 
         return $this->renderForm('etablissement/new.html.twig', [

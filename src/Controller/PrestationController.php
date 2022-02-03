@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Etablissement;
 use App\Entity\Prestation;
 use App\Form\PrestationType;
 use App\Repository\PrestationRepository;
@@ -62,7 +63,7 @@ class PrestationController extends AbstractController
             $entityManager->persist($prestation);
             $entityManager->flush();
 
-            return $this->redirectToRoute('etablissement_index', [], Response::HTTP_SEE_OTHER);
+            return $this->redirect('/etablissement/' . $prestation->getEtablissement()->getId());
         }
 
         return $this->renderForm('prestation/new.html.twig', [
@@ -82,7 +83,7 @@ class PrestationController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager->flush();
 
-            return $this->redirectToRoute('prestation_index', [], Response::HTTP_SEE_OTHER);
+            return $this->redirect('/etablissement/' . $prestation->getEtablissement()->getId());
         }
 
         return $this->renderForm('prestation/edit.html.twig', [

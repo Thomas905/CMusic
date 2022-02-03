@@ -20,6 +20,12 @@
                 </tr>
                 </thead>
                 <tbody>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td><a href="{{ path('prestation_new') }}"><img src="{{ asset('build/images/plus.png') }}" alt="add"></a></td>
+                </tr>
                 {% for prestation in etablissement.prestation %}
                     <tr>
                         <td>{{ prestation.date|date("m/d/Y") }}</td>
@@ -29,15 +35,10 @@
                             {% else %}
                                 <td><span class="badge badge-success">Payé</span></td>
                         {% endif %}
-                        <td><a href="{{ path('prestation_edit', {'id': prestation.id}) }}"><img src="{{ asset('build/images/pen.png') }}" alt="pen"></a></td>
+                        <td><a href="{{ path('prestation_edit', {'id': prestation.id}) }}"><img src="{{ asset('build/images/pen.png') }}" alt="pen"></a>
+                        <a href="{{ path('prestation_pdf_invoice', {'id': prestation.id}) }}"><img src="{{ asset('build/images/invoice-black.png') }}" alt="invoice" class="ms-3"></a></td>
                     </tr>
                 {% endfor %}
-                <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td><a href="{{ path('prestation_new') }}"><img src="{{ asset('build/images/plus.png') }}" alt="add"></a></td>
-                </tr>
                 </tbody>
             </table>
         </div>

@@ -5,8 +5,7 @@
 {% block body %}
 {{ include('components/_side.html.twig') }}
     <div class="right">
-        <h1 class="text-center mt-5">Rechercher une prestation</h1>
-        <a href="{{ path('prestation_new') }}" class="fw-bold mb-7 text-center text-decoration-underline">Encoder une nouvelle prestation</a>
+        <h1 class="text-center mt-5 mb-7">Rechercher une prestation</h1>
         <div class="table-responsive">
             <table class="table table-bordered shadow-cmusic">
             <thead>
@@ -45,7 +44,4 @@
         </table>
         </div>
     </div>
-
-
-    <a href="{{ path('prestation_new') }}">Create new</a>
 {% endblock %}
