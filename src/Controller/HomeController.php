@@ -13,19 +13,15 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 
 class HomeController extends AbstractController
 {
-    /**
-     * @Route("/", name="home")
-     * @IsGranted("ROLE_USER")
-     */
-    public function index(PrestationRepository $prestationRepository, EtablisementRepository $etablisementRepository): Response
+    #[Route(path: '/', name: 'home')]
+    #[IsGranted('ROLE_USER')]
+    public function index(PrestationRepository $prestationRepository, EtablisementRepository $etablisementRepository) : Response
     {
         $user = $this->getUser();
         $prestations = $prestationRepository->findAll();
         $countprestation = count($prestations);
-
         $etablissement = $etablisementRepository->findAll();
         $countetablissement = count($etablissement);
-
         return $this->render('home/index.html.twig', [
             'user' => $user,
             'countprestation' => $countprestation,
