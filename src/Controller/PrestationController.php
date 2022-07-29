@@ -47,8 +47,6 @@ class PrestationController extends AbstractController
             'user' => $user
         ]));
         return $MpdfFactory->createDownloadResponse($mPdf, "file.pdf");
-
-
     }
 
     /**

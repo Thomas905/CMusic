@@ -7,7 +7,6 @@ use App\Entity\Prestation;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
-use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -32,12 +31,7 @@ class PrestationType extends AbstractType
                         'Non payé' => 0,
                     ]
                 ])
-            ->add('date', DateType::class, [
-                'format' => 'ddMMyyyy',
-                'placeholder' => [
-                    'year' => 'Année', 'month' => 'Mois', 'day' => 'Jour',
-                ],
-            ])
+            ->add('date', DateType::class, ['widget' => 'single_text'])
             ->add('etablissement', EntityType::class, [
                 'class' => Etablissement::class,
                 'choice_label' => 'name'

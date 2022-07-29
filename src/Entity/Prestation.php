@@ -4,7 +4,6 @@ namespace App\Entity;
 
 use App\Repository\PrestationRepository;
 use Doctrine\ORM\Mapping as ORM;
-use phpDocumentor\Reflection\Types\Boolean;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
@@ -35,8 +34,6 @@ class Prestation
 
     /**
      * @ORM\Column(type="boolean")
-     * @Assert\NotBlank(
-     *      message = "Le statut du paiement est obligatoire.")
      */
     private Bool $paymentstatus;
 
