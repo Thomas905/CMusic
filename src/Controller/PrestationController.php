@@ -48,6 +48,13 @@ class PrestationController extends AbstractController
         $form = $this->createForm(PrestationType::class, $prestation);
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
+            if ($prestation->getPaymentStatus() == 0) {
+                $prestation->setColor('#F25718');
+            } elseif ($prestation->getPaymentStatus() == 1) {
+                $prestation->setColor('#FFC300');
+            } elseif ($prestation->getPaymentStatus() == 2) {
+                $prestation->setColor('#00FF3A');
+            }
             $entityManager->persist($prestation);
             $entityManager->flush();
 

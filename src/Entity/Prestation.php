@@ -23,7 +23,7 @@ class Prestation
     #[Assert\NotBlank(message: 'Le mode de paiement est obligatoire.')]
     private string $paymentmethod;
 
-    #[ORM\Column(type: 'boolean')]
+    #[ORM\Column(type: 'string')]
     private Bool $paymentstatus;
 
     #[ORM\Column(type: 'text', nullable: true)]
@@ -33,10 +33,6 @@ class Prestation
     #[ORM\JoinColumn(nullable: false)]
     #[Assert\NotBlank(message: "L'établissement' est obligatoire.")]
     private $etablissement;
-
-    #[ORM\Column(type: 'date')]
-    #[Assert\NotBlank(message: 'La date est obligatoire.')]
-    private $date;
 
     #[ORM\Column(type: 'string', length: 255)]
     #[Assert\NotBlank(message: 'Le type de prestation est obligatoire.')]
@@ -48,77 +44,83 @@ class Prestation
     #[ORM\Column(type: Types::DATETIME_MUTABLE)]
     private ?\DateTimeInterface $endTime = null;
 
+    #[ORM\Column(length: 255)]
+    private ?string $color = null;
+
     public function getId(): ?int
     {
         return $this->id;
     }
+
     public function getPrice(): ?int
     {
         return $this->price;
     }
+
     public function setPrice(int $price): self
     {
         $this->price = $price;
 
         return $this;
     }
+
     public function getPaymentMethod(): ?string
     {
         return $this->paymentmethod;
     }
+
     public function setPaymentMethod(string $paymentmethod): self
     {
         $this->paymentmethod = $paymentmethod;
 
         return $this;
     }
-    public function getPaymentStatus(): ?bool
+
+    public function getPaymentStatus(): ?string
     {
         return $this->paymentstatus;
     }
-    public function setPaymentStatus(bool $paymentstatus): self
+
+    public function setPaymentStatus(string $paymentstatus): self
     {
         $this->paymentstatus = $paymentstatus;
 
         return $this;
     }
+
     public function getReference(): ?string
     {
         return $this->reference;
     }
+
     public function setReference(?string $reference): self
     {
         $this->reference = $reference;
 
         return $this;
     }
+
     public function getEtablissement(): ?Etablissement
     {
         return $this->etablissement;
     }
+
     public function setEtablissement(?Etablissement $etablissement): self
     {
         $this->etablissement = $etablissement;
 
         return $this;
     }
+
     public function __toString() {
         return $this->payment_methods;
     }
-    public function getDate(): ?\DateTimeInterface
-    {
-        return $this->date;
-    }
-    public function setDate(\DateTimeInterface $date): self
-    {
-        $this->date = $date;
 
-        return $this;
-    }
     public function getType(): ?string
     {
         return $this->type;
     }
+
     public function setType(string $type): self
     {
         $this->type = $type;
@@ -146,6 +148,18 @@ class Prestation
     public function setEndTime(\DateTimeInterface $endTime): self
     {
         $this->endTime = $endTime;
+
+        return $this;
+    }
+
+    public function getColor(): ?string
+    {
+        return $this->color;
+    }
+
+    public function setColor(string $color): self
+    {
+        $this->color = $color;
 
         return $this;
     }

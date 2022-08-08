@@ -7,6 +7,7 @@ use App\Entity\Prestation;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\TimeType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -29,19 +30,19 @@ class PrestationType extends AbstractType
             ])
             ->add('paymentstatus', ChoiceType::class, [
                     'choices' => [
-                        'Payé' => 1,
+                        'Payé' => 2,
+                        'En attente' => 1,
                         'Non payé' => 0,
                     ]
                 ])
-            ->add('date', DateType::class, ['widget' => 'single_text'])
             ->add('etablissement', EntityType::class, [
                 'class' => Etablissement::class,
                 'choice_label' => function ($etablissement) {
                     return $etablissement->getCity() . ' - ' . $etablissement->getName();
                 }
             ])
-            ->add('startTime', TimeType::class, ['widget' => 'single_text'])
-            ->add('endTime', TimeType::class, ['widget' => 'single_text'])
+            ->add('startTime', DateTimeType::class, ['widget' => 'single_text'])
+            ->add('endTime', DateTimeType::class, ['widget' => 'single_text'])
         ;
     }
 

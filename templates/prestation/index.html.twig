@@ -31,7 +31,7 @@
                         {% else %}
                             <td><span class="badge badge-success">Payé</span></td>
                         {% endif %}
-                    <td>{{ prestation.date|date("m/d/Y") }}</td>
+                    <td>Début: {{ prestation.startTime|date("m/d/Y à h:s") }} <br> Fin : {{ prestation.endTime|date("m/d/Y à h:s") }}</td>
                     <td><a href="{{ path('prestation_edit', {'id': prestation.id}) }}"><img src="{{ asset('build/images/pen.png') }}" alt="pen"></a>
                         <a href="{{ path('prestation_pdf_invoice', {'id': prestation.id}) }}"><img src="{{ asset('build/images/invoice-black.png') }}" alt="invoice" class="ms-3"></a></td>
                 </tr>
