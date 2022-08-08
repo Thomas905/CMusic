@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use App\Repository\PrestationRepository;
+use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 
@@ -40,6 +41,12 @@ class Prestation
     #[ORM\Column(type: 'string', length: 255)]
     #[Assert\NotBlank(message: 'Le type de prestation est obligatoire.')]
     private $type;
+
+    #[ORM\Column(type: Types::DATETIME_MUTABLE)]
+    private ?\DateTimeInterface $startTime = null;
+
+    #[ORM\Column(type: Types::DATETIME_MUTABLE)]
+    private ?\DateTimeInterface $endTime = null;
 
     public function getId(): ?int
     {
@@ -115,6 +122,30 @@ class Prestation
     public function setType(string $type): self
     {
         $this->type = $type;
+
+        return $this;
+    }
+
+    public function getStartTime(): ?\DateTimeInterface
+    {
+        return $this->startTime;
+    }
+
+    public function setStartTime(\DateTimeInterface $startTime): self
+    {
+        $this->startTime = $startTime;
+
+        return $this;
+    }
+
+    public function getEndTime(): ?\DateTimeInterface
+    {
+        return $this->endTime;
+    }
+
+    public function setEndTime(\DateTimeInterface $endTime): self
+    {
+        $this->endTime = $endTime;
 
         return $this;
     }

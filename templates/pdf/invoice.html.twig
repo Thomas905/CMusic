@@ -14,11 +14,12 @@
 <h3 style="text-decoration: underline">Prestation :</h3>
 <p style="text-decoration: underline">{{ prestation.type }}</p>
 <p>{{ prestation.date|date("d/m/Y") }}</p>
-<p>Horaire : de 14h00 à 17h00 (horaires facultatif suivant l'organisateur)</p>
+<p>Horaire : de {{ prestation.startTime }} à {{ prestation.endTime }} (horaires facultatif suivant l'organisateur)</p>
 <p>Lieu : {{ prestation.etablissement.city }}</p>
 
 <h3 style="text-decoration: underline">Rémunération :</h3>
 <p>Il a été convenu un tarif forfaitaire de <span style="font-weight: bold">{{ prestation.price }}</span> € TTC pour les frais de déplacement.</p>
+<p>Mode de réglement : {{ prestation.paymentMethod }}</p>
 
 <p style="text-align: center">Fait en deux exemplaires à {{ prestation.etablissement.city }} le {{ prestation.date|date("d/m/Y") }}</p>
 

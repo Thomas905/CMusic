@@ -2,7 +2,6 @@
 
 namespace App\Controller;
 
-use App\Entity\Etablissement;
 use App\Entity\Prestation;
 use App\Form\PrestationType;
 use App\Repository\PrestationRepository;

@@ -41,6 +41,14 @@
             <label class="form-label">Date de la prestation</label>
             {{ form_widget(form.date) }}
         </div>
+        <div class="col mt-2 me-4 ms-4">
+            <label class="form-label">Heure de début de la prestation</label>
+            {{ form_widget(form.startTime) }}
+        </div>
+        <div class="col mt-2 me-4 ms-4">
+            <label class="form-label">Heure de fin de la prestation</label>
+            {{ form_widget(form.endTime) }}
+        </div>
     </div>
     <button type="submit" class="btn btn-primary float-end mt-5 mb-2 me-3">Envoyé</button>
 

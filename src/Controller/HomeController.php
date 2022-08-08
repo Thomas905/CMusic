@@ -2,7 +2,6 @@
 
 namespace App\Controller;
 
-use App\Entity\Prestation;
 use App\Repository\EtablisementRepository;
 use App\Repository\PrestationRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
