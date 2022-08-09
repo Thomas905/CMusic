@@ -1,18 +1,18 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Prestation index{% endblock %}
+{% block title %}Calendrier des prestations{% endblock %}
 
 {% block body %}
-{{ include('components/_side.html.twig') }}
+    {{ include('components/_side.html.twig') }}
     <div class="right">
         <div class="pt-5">
             <h1 class="text-center">Calendrier des prestations</h1>
-            <div id="calendrier"></div>
+            <div id="calendar"></div>
         </div>
     </div>
     <script>
         window.onload = () => {
-            let calendarElt = document.querySelector("#calendrier")
+            let calendarElt = document.querySelector("#calendar")
             let calendar = new FullCalendar.Calendar(calendarElt, {
                 initialView: 'timeGridWeek',
                 locale: 'fr',
@@ -24,10 +24,8 @@
                     end: 'dayGridMonth,timeGridWeek,timeGridDay'
                 },
                 events: {{ data|raw }},
-
             })
             calendar.setOption('height', 1000);
-
             calendar.render()
         }
     </script>

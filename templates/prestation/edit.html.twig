@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}New Prestation{% endblock %}
+{% block title %}Modification d'une prestation{% endblock %}
 
 {% block body %}
     {{ include('components/_side.html.twig') }}
@@ -12,7 +12,7 @@
             {{ form_errors(form) }}
             <div class="row me-2 ms-2 mt-2">
                 <div class="col-sm-6 col-md-6 col-lg-6">
-                    <label class="form-label">Nom de l'établissement</label>
+                    <label class="form-label">Nom des établissements</label>
                     {{ form_widget(form.etablissement) }}
                 </div>
                 <div class="col-sm-6 col-md-6 col-lg-6">
@@ -22,7 +22,7 @@
             </div>
             <div class="row me-2 ms-2 mt-2">
                 <div class="col">
-                    <label class="form-label">Type de la prestation</label>
+                    <label class="form-label">Type de prestation</label>
                     {{ form_widget(form.type) }}
                 </div>
             </div>
@@ -39,8 +39,12 @@
                 </div>
             </div>
             <div class="col mt-2 me-4 ms-4">
-                <label class="form-label">Date de la prestation</label>
-                {{ form_widget(form.date) }}
+                <label class="form-label">Date de début de la prestation</label>
+                {{ form_widget(form.startTime) }}
+            </div>
+            <div class="col mt-2 me-4 ms-4">
+                <label class="form-label">Date de fin de la prestation</label>
+                {{ form_widget(form.endTime) }}
             </div>
         </div>
         <button type="submit" class="btn btn-primary float-end mt-5 mb-2 me-3">Modifié</button>
