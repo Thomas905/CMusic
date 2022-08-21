@@ -12,7 +12,7 @@
             <table class="table table-bordered shadow-cmusic">
                 <thead>
                 <tr>
-                    <th>Date de la prestation <img id="calendar" src="{{ asset('build/images/calendar-black.png') }}" alt="calendar" class="ms-3"></th>
+                    <th>Date de la prestation <img src="{{ asset('build/images/calendar-black.png') }}" alt="calendar" class="ms-3"></th>
                     <th>Prix</th>
                     <th>Statut du paiement</th>
                     <th>Action</th>
@@ -41,5 +41,26 @@
                 </tbody>
             </table>
         </div>
+        <div id="calendar"></div>
+
     </div>
+    <script>
+        window.onload = () => {
+            let calendarElt = document.querySelector("#calendar")
+            let calendar = new FullCalendar.Calendar(calendarElt, {
+                initialView: 'timeGridWeek',
+                locale: 'fr',
+                timeZone: 'Europe/Paris',
+                themeSystem: 'bootstrap5',
+                headerToolbar: {
+                    start: 'prev,next today',
+                    center: 'title',
+                    end: 'dayGridMonth,timeGridWeek,timeGridDay'
+                },
+                events: {{ data|raw }},
+            })
+            calendar.setOption('height', 1000);
+            calendar.render()
+        }
+    </script>
 {% endblock %}

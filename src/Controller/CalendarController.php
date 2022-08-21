@@ -22,7 +22,6 @@ class CalendarController extends AbstractController
             $array[] = [
                 'id' => $key->getId(),
                 'title' => $key->getEtablissement()->getName() . '-' . $key->getEtablissement()->getCity(),
-                'etablissement_name' => $key->getEtablissement()->getName(),
                 'start' => $key->getStartTime()->format('Y-m-d H:i:s'),
                 'end' => $key->getEndTime()->format('Y-m-d H:i:s'),
                 'color' => $key->getColor(),

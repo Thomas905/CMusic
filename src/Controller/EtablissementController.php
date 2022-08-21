@@ -55,8 +55,20 @@ class EtablissementController extends AbstractController
     #[Route(path: '/{id}', name: 'etablissement_show', methods: ['GET'])]
     public function show(Etablissement $etablisement) : Response
     {
+        $array = [];
+        foreach ($etablisement->getPrestation() as $key) {
+            $array[] = [
+                'id' => $key->getId(),
+                'title' => $key->getEtablissement()->getName() . '-' . $key->getEtablissement()->getCity(),
+                'start' => $key->getStartTime()->format('Y-m-d H:i:s'),
+                'end' => $key->getEndTime()->format('Y-m-d H:i:s'),
+                'color' => $key->getColor(),
+            ];
+        }
+        $data = json_encode($array);
         return $this->render('etablissement/show.html.twig', [
             'etablissement' => $etablisement,
+            'data' => $data,
         ]);
     }
 
